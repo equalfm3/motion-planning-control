@@ -246,17 +246,17 @@ pip install -r requirements.txt
 # PID control of a second-order system with step response
 python -m src.pid.controller --kp 2.0 --ki 0.5 --kd 0.1 --setpoint 1.0
 
-# Auto-tune PID gains using Ziegler-Nichols method
-python -m src.pid.tuning --plant "1/(s^2 + 2s + 1)" --method ziegler-nichols
+# Auto-tune PID gains using relay feedback method
+python -m src.pid.tuning --method relay
 
 # Run linear MPC on a double integrator with constraints
-python -m src.mpc.linear_mpc --horizon 20 --x-max 5.0 --u-max 1.0
+python -m src.mpc.linear_mpc --horizon 10 --u-max 1.0
 
 # Generate minimum-jerk trajectory through waypoints
 python -m src.trajectory.min_jerk --waypoints "0,0;5,3;10,0" --duration 5.0
 
 # Simulate obstacle avoidance with control barrier functions
-python -m src.obstacles.cbf --obstacles "5,5,1.0;8,3,0.5" --goal 10,10
+python -m src.obstacles.cbf --obstacles "4,6,1.0;7,3,0.8" --goal 10,10
 ```
 
 ## Implementation Details
